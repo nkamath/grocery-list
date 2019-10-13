@@ -1,0 +1,12 @@
+{
+  "name": "grocery-list",
+  "version": "1.0.0",
+  "description": "a grocery list application that allows people to shop together",
+  "main": "src/server.js",
+  "scripts": {
+    "test": "export NODE_ENV=test&& jasmine",
+    "start": "node src/server.js"
+  },
+  "author": "Nritya Kamath",
+  "license": "ISC"
+}
