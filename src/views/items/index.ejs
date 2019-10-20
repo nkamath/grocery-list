@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <% include ../static/partials/head.ejs %>
+  </head>
+  <body>
+    <% include ../static/partials/navbar.ejs %>
+
+    <main class="container">
+
+      <h1>Items</h1>
+
+      <a href="/items/new" class="btn btn-success">New Item</a>
+
+      <table style="width:100%">
+        <tr>
+          <th>Name</th>
+          <th>Purchased?</th>
+          <th></th>
+          <th></th>
+        </tr>
+        <% items.forEach((item) => { %>
+          <tr>
+            <td> <%= item.name %> </td>
+            <td> <%= item.isPurchased %> </td>
+            <td> <a href="/items/<%= item.id %>/edit" class="btn btn-warning">Edit</a> </td>
+            <td> <form style="display:initial" action="/items/<%= item.id %>/destroy" method="post">
+            <button type="submit" class="btn btn-danger">Delete</button> </td>
+        </form>
+          </tr>
+        <% }) %>
+      </table>
+
+    </main>
+  </body>
+</html>

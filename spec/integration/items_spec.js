@@ -1,6 +1,6 @@
 const request = require("request");
 const server = require("../../src/server");
-const base = "http://localhost:3000/topics/";
+const base = "http://localhost:3000";
 
 const sequelize = require("../../src/db/models/index").sequelize;
 const User = require("../../src/db/models").User;
@@ -70,10 +70,10 @@ describe("routes : items", () => {
             });
           });
         
-        describe("GET /items/create", () => {
+        describe("GET /items/new", () => {
 
             it("should render a new item form", (done) => {
-              request.get(`${base}create`, (err, res, body) => {
+              request.get(`${base}/items/new`, (err, res, body) => {
                 expect(err).toBeNull();
                 expect(body).toContain("New Item");
                 done();
@@ -88,15 +88,16 @@ describe("routes : items", () => {
             const options = {
               url: `${base}/items/create`,
               form: {
-                name: "Tomatoes"
+                name: "Spinach",
+                userId: this.user.id
               }
             };
             request.post(options,
               (err, res, body) => {
-                Item.findOne({where: {name: "Tomatoes"}})
+                Item.findOne({where: {name: "Spinach"}})
                 .then((item) => {
                   expect(item).not.toBeNull();
-                  expect(item.name).toBe("Tomatoes");
+                  expect(item.name).toBe("Spinach");
                   expect(item.id).not.toBeNull();
                   done();
                 })
@@ -121,7 +122,7 @@ describe("routes : items", () => {
               request.post(
                `${base}/items/${this.item.id}/destroy`,
                 (err, res, body) => {
-                expect(res.statusCode).toBe(302);
+                expect(res.statusCode).toBe(303);
                 Item.findAll()
                 .then((items) => {
                   expect(err).toBeNull();
@@ -139,10 +140,10 @@ describe("routes : items", () => {
         describe("GET /items/:id/edit", () => {
 
             it("should render a view with an edit item form", (done) => {
-              request.get(`${base}${this.item.id}/edit`, (err, res, body) => {
+              request.get(`${base}/items/${this.item.id}/edit`, (err, res, body) => {
                 expect(err).toBeNull();
                 expect(body).toContain("Edit Item");
-                expect(body).toContain(item.name);
+                expect(body).toContain(this.item.name);
                 done();
               });
             });
@@ -153,7 +154,7 @@ describe("routes : items", () => {
 
             it("should update the name of the item", (done) => {
               const options = {
-                url: `${base}${this.item.id}/update`,
+                url: `${base}/items/${this.item.id}/update`,
                 form: {
                   name: "ToMAYtoes"
                 }
@@ -176,7 +177,7 @@ describe("routes : items", () => {
 
             it("should update the isPurchased value of the item", (done) => {
                 const options = {
-                  url: `${base}${this.item.id}/update`,
+                  url: `${base}/items/${this.item.id}/update`,
                   form: {
                     isPurchased: true
                   }
@@ -200,6 +201,4 @@ describe("routes : items", () => {
           });
 
         });
-    
-
 });
