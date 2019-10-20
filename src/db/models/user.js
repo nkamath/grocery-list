@@ -17,6 +17,14 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false
     }
   });
+
+  User.associate = function(models) {
+    // associations can be defined here
+    User.hasMany(models.Item, {
+      foreignKey: "userId",
+      as: "items"
+    });
+  };
   
   return User;
 };
