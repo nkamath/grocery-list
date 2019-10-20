@@ -25,6 +25,6 @@ router.post("/users/sign-in", [
     // password confirmation must match password
     check('passwordConfirmation').optional().matches('password')
 ], userController.signIn);
-router.get("/users/sign_out", userController.signOut);
+router.get("/users/sign-out", userController.signOut);
 
 module.exports = router;
