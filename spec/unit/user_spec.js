@@ -47,7 +47,7 @@ describe("User", () => {
         done();
       })
       .catch((err) => {
-        expect(err.message).toContain("Validation error");
+        expect(err.message).toContain("notNull Violation");
         done();
       });
     });
@@ -66,7 +66,7 @@ describe("User", () => {
         done();
       })
       .catch((err) => {
-        expect(err.message).toContain("Validation error");
+        expect(err.message).toContain("notNull Violation");
         done();
       });
     });
