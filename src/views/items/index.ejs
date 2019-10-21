@@ -22,7 +22,18 @@
         <% items.forEach((item) => { %>
           <tr>
             <td> <%= item.name %> </td>
-            <td> <%= item.isPurchased %> </td>
+            <td> <form style="display:initial" action="/items/<%= item.id %>/update" method="post">
+              <% if(!item.isPurchased){ %>
+                <button name="isPurchased" type="submit" value="true" class="btn btn-success">
+                  Mark as Purchased
+                </button>
+              <% } else { %>
+                <button name="isPurchased" type="submit" value="false" class="btn btn-danger">
+                  Mark as Unpurchased
+                </button>
+              <% } %>
+              </form>
+            </td> 
             <td> <a href="/items/<%= item.id %>/edit" class="btn btn-warning">Edit</a> </td>
             <td> <form style="display:initial" action="/items/<%= item.id %>/destroy" method="post">
             <button type="submit" class="btn btn-danger">Delete</button> </td>
