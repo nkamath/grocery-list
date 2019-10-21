@@ -10,10 +10,43 @@
     <main>
         <% include ./partials/messages.ejs %>
         <h1 class="heading">Grocery Lists!</h1>
-        <p class="heading">Makes shopping with others easy</p>
-    </main>
-</body>
+        <h6 class="heading">Makes shopping with others easy</h6>
+        <img src="../hero-image.jpg" style="width:100%; height:auto;" alt="Groceries">
+    
+
+    <div class="row heading">
+        <section class="col-lg-4"> 
+            <div class="card" style="width: 18rem;">
+                <img src="../card1.jpg" class="card-img-top" alt="list">
+                <div class="card-body">
+                    <h5 class="card-title">The last grocery list app you'll ever need...</h5>
+                    <p class="card-text">Add, edit, and delete items as required!</p>
+                </div>
+            </div>
+        </section>           
+        <section class="col-lg-4">
+            <div class="card" style="width: 18rem;">
+                <img src="../card2.jpg" class="card-img-top" alt="list2">
+                <div class="card-body">
+                    <h5 class="card-title">Real time updates</h5>
+                    <p class="card-text">Prevents you from accidentally duplicating purchases.</p>
+                </div>
+            </div>
+        </section>     
+        <section class="col-lg-4">
+            <div class="card" style="width: 18rem;">
+                <img src="..." class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">We're constantly updating</h5>
+                    <p class="card-text">Multiple lists feature coming soon!</p>
+                </div>
+            </div>
+        </section>     
+    </div>
+</main>
 
 <% include ./partials/baseScripts.ejs %>
+</body>
+
 
 </html>

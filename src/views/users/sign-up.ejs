@@ -1,17 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <% include ../static/partials/head.ejs %>
 </head>
 
 <body>
     <% include ../static/partials/navbar.ejs %>
-    <% include ../static/partials/messages.ejs %>
-    <main>
-        <h2>Welcome to Grocery List</h2>
+    
+    <main class="container">
+        <% include ../static/partials/messages.ejs %>
+        <h1>Welcome to Grocery List!</h1>
+        <h6>Please enter details below to create an account</h6>
         <div class="row">
-          <div class="col-md-8">
+          <div class="col-md-4">
             <form method="POST" action="/users/sign-up">
               <div class="form-group">
                 <label>Name:</label>
