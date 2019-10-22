@@ -9,7 +9,7 @@
 
       <h1>Items</h1>
 
-      <a href="/items/new" class="btn btn-success">New Item</a>
+      <a href="/items/new" class="btn btn-outline-primary form-button">New</a>
 
       <table style="width:100%">
         <tr>
@@ -20,22 +20,22 @@
         </tr>
         <% items.forEach((item) => { %>
           <tr>
-            <td> <%= item.name %> </td>
+            <td <% if(item.isPurchased) {%> style="text-decoration:line-through;color:grey" <% } %>  > <%= item.name %> </td>
             <td> <form style="display:initial" action="/items/<%= item.id %>/update" method="post">
               <% if(!item.isPurchased){ %>
-                <button name="isPurchased" type="submit" value="true" class="btn btn-success">
+                <button name="isPurchased" type="submit" value="true" class="btn btn-light">
                   Mark as Purchased
                 </button>
               <% } else { %>
-                <button name="isPurchased" type="submit" value="false" class="btn btn-danger">
+                <button name="isPurchased" type="submit" value="false" class="btn btn-outline-secondary">
                   Mark as Unpurchased
                 </button>
               <% } %>
               </form>
             </td> 
-            <td> <a href="/items/<%= item.id %>/edit" class="btn btn-warning">Edit</a> </td>
+            <td> <a href="/items/<%= item.id %>/edit" class="btn btn-secondary">Edit</a> </td>
             <td> <form style="display:initial" action="/items/<%= item.id %>/destroy" method="post">
-            <button type="submit" class="btn btn-danger">Delete</button> </td>
+            <button type="submit" class="btn btn-dark">Delete</button> </td>
         </form>
           </tr>
         <% }) %>
