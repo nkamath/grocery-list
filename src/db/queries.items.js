@@ -18,7 +18,20 @@ module.exports = {
             .catch((err) => {
             callback(err);
             })
-    }, 
+    },
+    getItemsByUser(user, callback) {
+      return Item.findAll({
+        where: {
+          userId:user.id
+        }
+      })
+          .then((items) => {
+          callback(null, items);
+          })
+          .catch((err) => {
+          callback(err);
+          })
+  },    
     addItem(newItem, callback){
         return Item.create(newItem)
         .then((item) => {

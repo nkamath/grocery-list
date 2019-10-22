@@ -3,7 +3,7 @@ const socket = require("../socket");
 
 module.exports = {
     index(req, res, next){
-        itemQueries.getAllItems((err,items)=>{
+        itemQueries.getItemsByUser(req.user,(err,items)=>{
             if(err){
                 res.redirect(500, "/");
             } else{
@@ -11,9 +11,9 @@ module.exports = {
                     if(a.isPurchased && b.isPurchased){
                         return 0; 
                     } else if(a.isPurchased){
-                        return -1;
+                        return 1;
                     } else if (b.isPurchased){
-                        return 1; 
+                        return -1; 
                     } else{
                         return 0;
                     }
