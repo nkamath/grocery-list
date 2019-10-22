@@ -22,3 +22,16 @@ body {
     margin-top:10px;
     margin-bottom:20px;
 }
+
+#add-item-textbox {
+    width: 50%;
+    display: inline;
+}
+
+#add-item-button {
+    vertical-align: top;
+}
+
+#add-item-form {
+    margin-bottom:20px
+}

@@ -9,12 +9,15 @@
 
       <h1>Items</h1>
 
-      <a href="/items/new" class="btn btn-outline-primary form-button">New</a>
+      <form id="add-item-form" action="/items/create" method="post">
+        <input id="add-item-textbox" type="text" class="form-control" name="name" aria-describedby="nameHelp" placeholder="Add Item">
+        <button type="submit" class="btn btn-outline-primary" id="add-item-button">+</button>
+      </form>
 
       <table style="width:100%">
         <tr>
           <th>Name</th>
-          <th>Purchased?</th>
+          <th></th>
           <th></th>
           <th></th>
         </tr>
@@ -35,14 +38,12 @@
             </td> 
             <td> <a href="/items/<%= item.id %>/edit" class="btn btn-secondary">Edit</a> </td>
             <td> <form style="display:initial" action="/items/<%= item.id %>/destroy" method="post">
-            <button type="submit" class="btn btn-dark">Delete</button> </td>
-        </form>
+            <button type="submit" class="btn btn-dark">Delete</button> </form> </td>
           </tr>
         <% }) %>
       </table>
 
     </main>
-    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
     <script src="/socket.io/socket.io.js"></script>
       <script>
         var socket = io.connect();
@@ -54,6 +55,5 @@
               document.location.reload();
             });
       </script>
-    <% include ../static/partials/baseScripts.ejs %>
   </body>
 </html>
