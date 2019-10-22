@@ -5,7 +5,6 @@
   </head>
   <body>
     <% include ../static/partials/navbar.ejs %>
-
     <main class="container">
 
       <h1>Items</h1>
@@ -43,5 +42,18 @@
       </table>
 
     </main>
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+      <script>
+        var socket = io.connect();
+        $('form').submit(function(e){
+                socket.emit('item_changed');
+            });
+
+        socket.on('item_changed', function(msg){
+              document.location.reload();
+            });
+      </script>
+    <% include ../static/partials/baseScripts.ejs %>
   </body>
 </html>

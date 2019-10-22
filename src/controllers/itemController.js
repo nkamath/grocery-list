@@ -1,5 +1,5 @@
 const itemQueries = require("../db/queries.items.js");
- 
+const socket = require("../socket");
 
 module.exports = {
     index(req, res, next){
@@ -35,6 +35,7 @@ module.exports = {
             res.redirect(500, "/items/new");
           } else {
             res.redirect(303, `/items`);
+            socket.emit('item_changed');
           }
         });
       }, 
@@ -49,10 +50,11 @@ module.exports = {
     },
     update(req, res, next){
             itemQueries.updateItem(req.params.id, req.body, (err, item) => {
-            console.log(item.name + " Updated with new values: " + item.isPurchased);
             if(err || item == null){
-                res.redirect(404, `/items/${req.params.id}/edit`);
+                console.log(err);
+                res.redirect(404, `/items`);
             } else {
+                socket.emit('item_changed');
                 res.redirect(`/items`);
             }
             });
@@ -63,7 +65,8 @@ module.exports = {
             if(err){
             res.redirect(500, `/items`)
             } else {
-            res.redirect(303, "/items")
+                socket.emit('item_changed');
+                res.redirect(303, "/items")
             }
         });
     }
