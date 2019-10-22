@@ -1,8 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
-  <body>
-      <main>
-        <h1 style="text-align:center; margin-top:50px;">Welcome to the Grocery List Application</h1>
-      </main>
-    </body>
+
+<head>
+    <% include ./partials/head.ejs %>
+</head>
+
+<body>
+    <% include ./partials/navbar.ejs %>
+    <main>
+        <% include ./partials/messages.ejs %>
+        <h1 class="heading">GROCERY LIST</h1>
+        <h6 class="heading">Makes shopping with others easy</h6>
+        <img src="../hero-image.jpg" style="width:100%; height:auto;" alt="Groceries">
+    
+
+    <div class="row heading" id="card-container">
+        <section class="col-lg-4"> 
+            <div class="card" style="width: 18rem; height: 21rem;">
+                <img src="../card1.jpg" class="card-img-top" alt="list">
+                <div class="card-body">
+                    <h5 class="card-title">The last grocery list app you'll ever need...</h5>
+                    <p class="card-text">Add, edit, and delete items as required!</p>
+                </div>
+            </div>
+        </section>           
+        <section class="col-lg-4">
+            <div class="card" style="width: 18rem; height: 21rem;">
+                <img src="../card2.jpg" class="card-img-top" alt="list2">
+                <div class="card-body">
+                    <h5 class="card-title">Real time updates</h5>
+                    <p class="card-text">Prevents you from accidentally duplicating purchases.</p>
+                </div>
+            </div>
+        </section>     
+        <section class="col-lg-4">
+            <div class="card" style="width: 18rem; height: 21rem;">
+                <img src="../card3.jpg" class="card-img-top" alt="Coming soon">
+                <div class="card-body">
+                    <h5 class="card-title">We're constantly updating</h5>
+                    <p class="card-text">Multiple lists feature coming soon!</p>
+                </div>
+            </div>
+        </section>     
+    </div>
+</main>
+</body>
+
+
 </html>

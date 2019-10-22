@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <% include ../static/partials/head.ejs %>
+  </head>
+  <body>
+    <% include ../static/partials/navbar.ejs %>
+    <main class="container">
+
+      <h1>Items</h1>
+
+      <form id="add-item-form" action="/items/create" method="post">
+        <input id="add-item-textbox" type="text" class="form-control" name="name" aria-describedby="nameHelp" placeholder="Add Item">
+        <button type="submit" class="btn btn-outline-primary" id="add-item-button">+</button>
+      </form>
+
+      <table style="width:100%">
+        <tr>
+          <th>Name</th>
+          <th></th>
+          <th></th>
+          <th></th>
+        </tr>
+        <% items.forEach((item) => { %>
+          <tr>
+            <td <% if(item.isPurchased) {%> style="text-decoration:line-through;color:grey" <% } %>  > <%= item.name %> </td>
+            <td> <form style="display:initial" action="/items/<%= item.id %>/update" method="post">
+              <% if(!item.isPurchased){ %>
+                <button name="isPurchased" type="submit" value="true" class="btn btn-light">
+                  Mark as Purchased
+                </button>
+              <% } else { %>
+                <button name="isPurchased" type="submit" value="false" class="btn btn-outline-secondary">
+                  Mark as Unpurchased
+                </button>
+              <% } %>
+              </form>
+            </td> 
+            <td> <a href="/items/<%= item.id %>/edit" class="btn btn-secondary">Edit</a> </td>
+            <td> <form style="display:initial" action="/items/<%= item.id %>/destroy" method="post">
+            <button type="submit" class="btn btn-dark">Delete</button> </form> </td>
+          </tr>
+        <% }) %>
+      </table>
+
+    </main>
+    <script src="/socket.io/socket.io.js"></script>
+      <script>
+        var socket = io.connect();
+        $('form').submit(function(e){
+                socket.emit('item_changed');
+            });
+
+        socket.on('item_changed', function(msg){
+              document.location.reload();
+            });
+      </script>
+  </body>
+</html>

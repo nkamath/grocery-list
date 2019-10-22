@@ -1,0 +1,37 @@
+h1 {
+    margin-top: 100px;
+    margin-bottom:20px;
+}
+
+head {
+    font-family: 'Indie Flower', cursive;
+}
+body {
+    font-family: 'Indie Flower', cursive;
+}
+
+.heading {
+    text-align: center;
+}
+
+#card-container {
+    margin: 20px;
+}
+
+.form-button {
+    margin-top:10px;
+    margin-bottom:20px;
+}
+
+#add-item-textbox {
+    width: 50%;
+    display: inline;
+}
+
+#add-item-button {
+    vertical-align: top;
+}
+
+#add-item-form {
+    margin-bottom:20px
+}
