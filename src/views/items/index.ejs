@@ -7,7 +7,7 @@
     <% include ../static/partials/navbar.ejs %>
     <main class="container">
 
-      <h1>Items</h1>
+      <h1>The List</h1>
 
       <form id="add-item-form" action="/items/create" method="post">
         <input id="add-item-textbox" type="text" class="form-control" name="name" aria-describedby="nameHelp" placeholder="Add Item">
@@ -45,11 +45,9 @@
 
     </main>
     <script src="/socket.io/socket.io.js"></script>
+    <% // Connect to socket and reload if item_changed event is received  %>
       <script>
         var socket = io.connect();
-        $('form').submit(function(e){
-                socket.emit('item_changed');
-            });
 
         socket.on('item_changed', function(msg){
               document.location.reload();

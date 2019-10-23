@@ -43,6 +43,36 @@ describe("routes : items", () => {
         });
     });
 
+    describe("guest user actions", () => {
+
+      beforeEach((done) => {    
+        request.get({           // mock authentication
+          url: "http://localhost:3000/auth/fake",
+          form: {
+            userId: 0 // flag to indicate mock auth to destroy any session
+          }
+        },
+          (err, res, body) => {
+            done();
+          }
+        );    
+      });
+ 
+      
+      describe("GET /items", () => {
+
+          it("should not render a grocery list, but instead redirect to homepage", (done) => {
+            request.get(`${base}/items`, (err, res, body) => {
+              expect(err).toBeNull();
+              expect(body).toContain("Grocery List");
+              done();
+            });
+          });
+        });
+      });
+    
+    
+    
     describe("signed in user performing CRUD actions for Item", () => {
 
         beforeEach((done) => {    
@@ -70,17 +100,6 @@ describe("routes : items", () => {
             });
           });
         
-        describe("GET /items/new", () => {
-
-            it("should render a new item form", (done) => {
-              request.get(`${base}/items/new`, (err, res, body) => {
-                expect(err).toBeNull();
-                expect(body).toContain("New Item");
-                done();
-              });
-            });
-      
-          });
         
         describe("POST /items/create", () => {
    

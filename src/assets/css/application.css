@@ -1,13 +1,13 @@
 h1 {
-    margin-top: 100px;
+    margin-top: 60px;
     margin-bottom:20px;
 }
 
 head {
-    font-family: 'Indie Flower', cursive;
+    font-family: 'Patrick Hand', cursive;
 }
 body {
-    font-family: 'Indie Flower', cursive;
+    font-family: 'Patrick Hand', cursive;
 }
 
 .heading {
@@ -21,6 +21,13 @@ body {
 .form-button {
     margin-top:10px;
     margin-bottom:20px;
+}
+
+.popup-alert {
+    margin-top:70px;
+    position: relative;
+    border: 1px solid transparent;
+    border-radius: .25rem;
 }
 
 #add-item-textbox {
