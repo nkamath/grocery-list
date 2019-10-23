@@ -17,6 +17,8 @@ function normalizePort(val) {
   }
 
 const server = http.createServer(app);
+
+// Initialize the io instance in socket module with the server object. 
 socket.init(server);
 
 server.listen(port);

@@ -38,6 +38,8 @@ module.exports = {
             res.redirect(500, "/items/new");
           } else {
             res.redirect(303, `/items`);
+
+            // Notify connected clients that a new item has been created. 
             socket.emit('item_changed');
           }
         });
@@ -57,6 +59,7 @@ module.exports = {
                 console.log(err);
                 res.redirect(404, `/items`);
             } else {
+                // Notify connected clients that an item has been updated. 
                 socket.emit('item_changed');
                 res.redirect(`/items`);
             }
@@ -68,6 +71,7 @@ module.exports = {
             if(err){
             res.redirect(500, `/items`)
             } else {
+                // Notify connected clients that an item has been deleted. 
                 socket.emit('item_changed');
                 res.redirect(303, "/items")
             }
