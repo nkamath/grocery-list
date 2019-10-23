@@ -70,17 +70,6 @@ describe("routes : items", () => {
             });
           });
         
-        describe("GET /items/new", () => {
-
-            it("should render a new item form", (done) => {
-              request.get(`${base}/items/new`, (err, res, body) => {
-                expect(err).toBeNull();
-                expect(body).toContain("New Item");
-                done();
-              });
-            });
-      
-          });
         
         describe("POST /items/create", () => {
    
